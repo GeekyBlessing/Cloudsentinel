@@ -151,3 +151,14 @@ Tactic progression:
   [9] Collection
       T1530 — Data from Cloud Storage
 ```
+## Post-Remediation Scan
+
+| Finding | Status |
+|---------|--------|
+| CloudTrail log validation | REMEDIATED ✓ |
+| EBS encryption by default | REMEDIATED ✓ |
+| IAM user without MFA | Pending approval |
+| S3 access logging (×2) | Plan generated |
+| VPC Flow Logs | Plan generated |
+
+**Total findings reduced: 6 → 4**
