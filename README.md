@@ -205,6 +205,25 @@ python3 -m pytest tests/test_mitre.py -v
 ```
 
 **142 tests across 6 modules. Zero failures.**
+---
+
+## Live scan results
+
+Scanned against a real AWS account (eu-north-1) — 6 findings detected,
+5 ATT&CK tactics active, kill chain reaching **Collection**.
+
+See [LIVE_SCAN_RESULTS.md](LIVE_SCAN_RESULTS.md) for full output.
+
+| Finding | Severity | Risk | ATT&CK Techniques |
+|---------|----------|------|-------------------|
+| IAM user without MFA | HIGH | 7.3/10 | T1078, T1528 |
+| CloudTrail validation disabled | MEDIUM | 5.9/10 | T1070 |
+| VPC Flow Logs disabled | MEDIUM | 5.9/10 | T1562, T1570 |
+| EBS encryption disabled | MEDIUM | 5.0/10 | T1530 |
+| S3 access logging disabled (×2) | MEDIUM | 5.0/10 | T1070 |
+
+**Kill chain:** Initial Access → Defense Evasion → Credential Access →
+Lateral Movement → Collection
 
 ---
 
