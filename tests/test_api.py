@@ -6,6 +6,7 @@ Uses TestClient — no real AWS or DynamoDB calls.
 """
 import pytest
 from unittest.mock import MagicMock, patch
+from httpx import AsyncClient
 from fastapi.testclient import TestClient
 
 
