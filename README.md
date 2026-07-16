@@ -18,14 +18,14 @@ you *what an attacker can do with it*.
 
 Every finding is enriched with:
 
-- **MITRE ATT&CK® technique mappings** — with a plain-English explanation
+- **MITRE ATT&CK® technique mappings** - with a plain-English explanation
   of why this specific misconfiguration enables this specific technique
-- **Blast radius score** — quantifies lateral movement paths, data
+- **Blast radius score** - quantifies lateral movement paths, data
   exfiltration risk, and privilege escalation potential
-- **Kill chain construction** — given a set of open findings, CloudSentinel
+- **Kill chain construction** - given a set of open findings, CloudSentinel
   reconstructs the furthest an adversary could progress through the
   ATT&CK kill chain
-- **Compliance controls** — every finding maps to CIS, NIST CSF, SOC 2,
+- **Compliance controls** - every finding maps to CIS, NIST CSF, SOC 2,
   and PCI DSS simultaneously
 
 ---
@@ -82,9 +82,9 @@ Every finding is enriched with:
 6. Full account takeover achieved from a single SSRF vulnerability
 
 **ATT&CK techniques enabled:**
-- T1552 — Unsecured Credentials (IMDSv1 credential theft)
-- T1548 — Abuse Elevation Control Mechanism (wildcard IAM escalation)
-- T1098 — Account Manipulation (persistent backdoor IAM user created)
+- T1552 - Unsecured Credentials (IMDSv1 credential theft)
+- T1548 - Abuse Elevation Control Mechanism (wildcard IAM escalation)
+- T1098 - Account Manipulation (persistent backdoor IAM user created)
 
 **CloudSentinel detection:** Both CS-EC2-003 and CS-IAM-003 flagged
 as HIGH with privilege escalation blast radius. Kill chain shows
@@ -101,14 +101,14 @@ Credential Access → Privilege Escalation → Persistence.
 1. Automated scanner (GrayhatWarfare) discovers public S3 bucket (CS-S3-001)
 2. Attacker syncs entire bucket to external AWS account — zero authentication
 3. S3 access logging disabled (CS-S3-003) — no S3-level forensic evidence
-4. CloudTrail disabled (CS-LOG-001) — no API-level audit trail
+4. CloudTrail disabled (CS-LOG-001) - no API-level audit trail
 5. Exfiltration of entire data lake produces zero detectable artifacts
 6. Breach discovered weeks later via third-party notification
 
 **ATT&CK techniques enabled:**
-- T1530 — Data from Cloud Storage (unauthenticated bucket access)
-- T1537 — Transfer Data to Cloud Account (sync to attacker account)
-- T1070 — Indicator Removal (no logs = no evidence)
+- T1530 - Data from Cloud Storage (unauthenticated bucket access)
+- T1537 - Transfer Data to Cloud Account (sync to attacker account)
+- T1070 - Indicator Removal (no logs = no evidence)
 
 **CloudSentinel detection:** All three rules flagged. Kill chain reaches
 Exfiltration with data exfiltration blast radius flag. Narrative explicitly
@@ -116,7 +116,7 @@ states data loss is a realistic outcome.
 
 ---
 
-### Scenario 3 — The Ransomware Staging path
+### Scenario 3 - The Ransomware Staging path
 *Open RDP + no VPC flow logs = lateral movement in the dark*
 
 **Misconfigurations:** Unrestricted RDP + VPC Flow Logs disabled + EBS unencrypted
@@ -130,10 +130,10 @@ states data loss is a realistic outcome.
 6. Snapshots exfiltrated to attacker account before encryption
 
 **ATT&CK techniques enabled:**
-- T1190 — Exploit Public-Facing Application (open RDP)
-- T1021 — Remote Services (internal RDP lateral movement)
-- T1570 — Lateral Tool Transfer (ransomware staging, no network logs)
-- T1530 — Data from Cloud Storage (unencrypted snapshot exfiltration)
+- T1190 - Exploit Public-Facing Application (open RDP)
+- T1021 - Remote Services (internal RDP lateral movement)
+- T1570 - Lateral Tool Transfer (ransomware staging, no network logs)
+- T1530 - Data from Cloud Storage (unencrypted snapshot exfiltration)
 
 **CloudSentinel detection:** Three rules flagged across EC2, VPC, and
 EBS. Kill chain spans Initial Access → Lateral Movement → Collection.
@@ -209,7 +209,7 @@ python3 -m pytest tests/test_mitre.py -v
 
 ## Live scan results
 
-Scanned against a real AWS account (eu-north-1) — 6 findings detected,
+Scanned against a real AWS account (eu-north-1) - 6 findings detected,
 5 ATT&CK tactics active, kill chain reaching **Collection**.
 
 See [LIVE_SCAN_RESULTS.md](LIVE_SCAN_RESULTS.md) for full output.
@@ -249,7 +249,7 @@ terraform apply -var="account_id=YOUR_ACCOUNT_ID"
 
 ## Author
 
-**Toriola Opeyemi** — Cloud Security Engineer
+**Toriola Opeyemi** - Cloud Security Engineer
 [LinkedIn](https://linkedin.com/in/toriola-opeyemi) ·
 [GitHub](https://github.com/GeekyBlessing)
 
