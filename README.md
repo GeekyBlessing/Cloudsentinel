@@ -68,7 +68,7 @@ Every finding is enriched with:
 
 ## Attack scenarios detected
 
-### Scenario 1 — The SSRF-to-Account-Takeover path
+### Scenario 1 - The SSRF-to-Account-Takeover path
 *Modelled on the Capital One breach (2019)*
 
 **Misconfigurations:** IMDSv1 enabled + overprivileged Lambda role
@@ -76,8 +76,8 @@ Every finding is enriched with:
 **Attack path:**
 1. Attacker finds SSRF vulnerability in web application on EC2
 2. IMDSv1 (CS-EC2-003) allows unauthenticated GET to `169.254.169.254`
-3. Instance role credentials returned — no session token required
-4. Role has `iam:*` wildcard (CS-IAM-003) — privilege escalation trivial
+3. Instance role credentials returned - no session token required
+4. Role has `iam:*` wildcard (CS-IAM-003) - privilege escalation trivial
 5. Attacker calls `iam:CreatePolicyVersion` to attach AdministratorAccess
 6. Full account takeover achieved from a single SSRF vulnerability
 
@@ -92,15 +92,15 @@ Credential Access → Privilege Escalation → Persistence.
 
 ---
 
-### Scenario 2 — The Silent Data Exfiltration path
+### Scenario 2 - The Silent Data Exfiltration path
 *Public S3 + disabled logging = no forensic evidence*
 
 **Misconfigurations:** S3 public access + S3 logging disabled + CloudTrail disabled
 
 **Attack path:**
 1. Automated scanner (GrayhatWarfare) discovers public S3 bucket (CS-S3-001)
-2. Attacker syncs entire bucket to external AWS account — zero authentication
-3. S3 access logging disabled (CS-S3-003) — no S3-level forensic evidence
+2. Attacker syncs entire bucket to external AWS account - zero authentication
+3. S3 access logging disabled (CS-S3-003) - no S3-level forensic evidence
 4. CloudTrail disabled (CS-LOG-001) - no API-level audit trail
 5. Exfiltration of entire data lake produces zero detectable artifacts
 6. Breach discovered weeks later via third-party notification
@@ -124,9 +124,9 @@ states data loss is a realistic outcome.
 **Attack path:**
 1. Shodan indexes RDP port 3389 open to 0.0.0.0/0 (CS-EC2-002)
 2. Attacker brute-forces or credential-stuffs RDP credentials
-3. VPC Flow Logs disabled (CS-LOG-003) — lateral movement invisible
+3. VPC Flow Logs disabled (CS-LOG-003) - lateral movement invisible
 4. Attacker moves to other EC2 instances using internal RDP
-5. Ransomware deployed — EBS volumes unencrypted (CS-ENC-001)
+5. Ransomware deployed - EBS volumes unencrypted (CS-ENC-001)
 6. Snapshots exfiltrated to attacker account before encryption
 
 **ATT&CK techniques enabled:**
